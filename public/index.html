@@ -1,0 +1,2486 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🏷️ 估價王 The Price is Right HK｜團契破冰格價大電視</title>
+  <!-- Google Fonts: Noto Sans TC -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@500;700;900&display=swap" rel="stylesheet">
+  <!-- QRCode.js via CDN for Built-in QR Code Modal -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <style>
+    :root {
+      --game-pink-bg: #F08CAE;
+      --game-pink-btn: #E63E7A;
+      --game-yellow-bg: #F3C242;
+      --game-brown-text: #4A3222;
+      --game-orange-bg: #EA6A00;
+      --game-blue-bg: #1EA1E8;
+      --game-blue-tag: #0D74B8;
+      --game-green-bg: #5CB346;
+      --game-taupe-bg: #916E57;
+      --card-white: #FFFFFF;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Noto Sans TC', 'PingFang HK', 'Microsoft JhengHei', sans-serif;
+      background-color: var(--game-pink-bg);
+      color: var(--game-brown-text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+
+    /* Top Navigation Bar */
+    .top-navbar {
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(8px);
+      padding: 12px 24px;
+      display: flex;
+       flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 4px 16px rgba(74, 50, 34, 0.12);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 4px solid var(--game-yellow-bg);
+    }
+
+    .brand-logo {
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: var(--game-brown-text);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      letter-spacing: 0.5px;
+    }
+
+    .brand-sub {
+      font-size: 0.85rem;
+      background: var(--game-blue-tag);
+      color: #FFF;
+      padding: 3px 10px;
+      border-radius: 9999px;
+      font-weight: 700;
+    }
+
+    .nav-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .pill-btn {
+      border-radius: 9999px;
+      padding: 8px 16px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      border: 2px solid var(--game-brown-text);
+      background: #FFFFFF;
+      color: var(--game-brown-text);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: inherit;
+    }
+
+    .pill-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    .pill-btn:active {
+      transform: translateY(0);
+    }
+
+    .pill-btn.host-btn {
+      background: var(--game-brown-text);
+      color: #FFFFFF;
+      border-color: #FFFFFF;
+    }
+
+    .pill-btn.bundle-btn {
+      background: var(--game-yellow-bg);
+      color: var(--game-brown-text);
+      border: 3px solid #FFFFFF;
+      box-shadow: 0 4px 12px rgba(234, 106, 0, 0.28);
+    }
+
+    .pill-btn.cta-pink {
+      background: var(--game-pink-btn);
+      color: #FFFFFF;
+      border: 3px solid #FFFFFF;
+      font-size: 1.1rem;
+      padding: 12px 24px;
+      box-shadow: 0 4px 12px rgba(230, 62, 122, 0.35);
+    }
+
+    .pill-btn.cta-green {
+      background: var(--game-green-bg);
+      color: #FFFFFF;
+      border: 3px solid #FFFFFF;
+      font-size: 1.1rem;
+      padding: 12px 24px;
+    }
+
+    .pill-btn.cta-orange {
+      background: var(--game-orange-bg);
+      color: #FFFFFF;
+      border: 3px solid #FFFFFF;
+      font-size: 1.05rem;
+      padding: 10px 20px;
+    }
+
+    .pill-btn.cta-blue {
+      background: var(--game-blue-tag);
+      color: #FFFFFF;
+      border: 3px solid #FFFFFF;
+      font-size: 1.05rem;
+      padding: 10px 20px;
+    }
+
+    /* Section Styling */
+    .game-section {
+      padding: 28px 20px;
+      max-width: 1280px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .section-divider {
+      border-top: 6px dashed rgba(255, 255, 255, 0.85);
+      margin: 8px 0;
+    }
+
+    .section-badge-wrap {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 22px;
+    }
+
+    .section-badge {
+      background: var(--game-pink-btn);
+      color: #FFFFFF;
+      border: 3px solid #FFFFFF;
+      border-radius: 9999px;
+      padding: 10px 28px;
+      font-size: 1.35rem;
+      font-weight: 900;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.14);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-align: center;
+    }
+
+    .section-badge.blue {
+      background: var(--game-blue-tag);
+    }
+
+    .section-badge.yellow {
+      background: var(--game-yellow-bg);
+      color: var(--game-brown-text);
+    }
+
+    .section-badge.orange {
+      background: var(--game-orange-bg);
+    }
+
+    /* Main Product Showcase Card */
+    .game-card {
+      background: var(--card-white);
+      border-radius: 28px;
+      padding: 28px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+      margin-bottom: 24px;
+      position: relative;
+    }
+
+    .game-card.active-ring {
+      outline: 3px solid #FFFFFF;
+      outline-offset: 4px;
+    }
+
+    .product-header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 20px;
+      border-bottom: 3px dashed #F0E6DF;
+      padding-bottom: 16px;
+    }
+
+    .category-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      border-radius: 9999px;
+      font-weight: 900;
+      font-size: 1rem;
+      color: #FFFFFF;
+      background: var(--game-blue-tag);
+    }
+
+    .category-pill.supermarket {
+      background: var(--game-green-bg);
+    }
+
+    .category-pill.electronics {
+      background: var(--game-blue-tag);
+    }
+
+    .category-pill.showcase {
+      background: var(--game-orange-bg);
+    }
+
+    .round-counter {
+      font-size: 1.1rem;
+      font-weight: 900;
+      background: var(--game-yellow-bg);
+      color: var(--game-brown-text);
+      padding: 6px 16px;
+      border-radius: 9999px;
+    }
+
+    .product-stage {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    @media (max-width: 900px) {
+      .product-stage {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .product-Showcase-box {
+      background: linear-gradient(145deg, #FFFDF7 0%, #FFF4D6 100%);
+      border: 4px solid var(--game-yellow-bg);
+      border-radius: 24px;
+      padding: 28px 20px;
+      text-align: center;
+      position: relative;
+    }
+
+    .product-emoji {
+      font-size: 5.2rem;
+      line-height: 1.1;
+      margin-bottom: 12px;
+      filter: drop-shadow(0 6px 10px rgba(0,0,0,0.1));
+    }
+
+    .product-title {
+      font-size: 1.85rem;
+      font-weight: 900;
+      color: var(--game-brown-text);
+      margin-bottom: 8px;
+    }
+
+    .product-spec {
+      font-size: 1.15rem;
+      color: #6E503B;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .product-hint {
+      display: inline-block;
+      background: #FFFFFF;
+      border: 2px dashed var(--game-orange-bg);
+      color: var(--game-brown-text);
+      padding: 8px 16px;
+      border-radius: 16px;
+      font-size: 0.98rem;
+      font-weight: 700;
+    }
+
+    /* Store Price Comparison Box */
+    .comparison-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .store-cards-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    @media (max-width: 560px) {
+      .store-cards-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .store-card {
+      background: #F8FAFC;
+      border: 3px solid #E2E8F0;
+      border-radius: 22px;
+      padding: 20px;
+      text-align: center;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .store-card.lowest-winner {
+      background: #ECFDF3;
+      border-color: var(--game-green-bg);
+      box-shadow: 0 8px 20px rgba(92, 179, 70, 0.25);
+      transform: scale(1.03);
+    }
+
+    .store-name {
+      font-size: 1.2rem;
+      font-weight: 900;
+      margin-bottom: 10px;
+      color: var(--game-brown-text);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .store-price-mask {
+      font-size: 2.3rem;
+      font-weight: 900;
+      color: var(--game-brown-text);
+      background: #FFFFFF;
+      border-radius: 16px;
+      padding: 14px 10px;
+      border: 2px dashed #CBD5E1;
+      letter-spacing: 1px;
+    }
+
+    .store-card.lowest-winner .store-price-mask {
+      color: var(--game-green-bg);
+      border: 3px solid var(--game-green-bg);
+    }
+
+    .lowest-badge {
+      margin-top: 10px;
+      display: inline-block;
+      background: var(--game-green-bg);
+      color: #FFFFFF;
+      font-size: 0.9rem;
+      font-weight: 900;
+      padding: 4px 12px;
+      border-radius: 9999px;
+    }
+
+    /* Official Target Lowest Price Banner */
+    .official-lowest-banner {
+      background: var(--game-yellow-bg);
+      border: 4px solid var(--game-brown-text);
+      border-radius: 22px;
+      padding: 18px 22px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .official-lowest-label {
+      font-size: 1.25rem;
+      font-weight: 900;
+    }
+
+    .official-lowest-value {
+      font-size: 2.4rem;
+      font-weight: 900;
+      color: var(--game-brown-text);
+      background: #FFFFFF;
+      padding: 6px 20px;
+      border-radius: 16px;
+      border: 3px solid var(--game-brown-text);
+    }
+
+    /* Timer & Controls Bar */
+    .stage-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      margin-top: 22px;
+      padding-top: 18px;
+      border-top: 3px dashed #F0E6DF;
+    }
+
+    .timer-pill {
+      background: var(--game-orange-bg);
+      color: #FFFFFF;
+      padding: 10px 20px;
+      border-radius: 9999px;
+      font-size: 1.25rem;
+      font-weight: 900;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border: 3px solid #FFFFFF;
+      box-shadow: 0 4px 10px rgba(234, 106, 0, 0.25);
+    }
+
+    /* Bonus Mini-Game Card */
+    .bonus-panel {
+      background: linear-gradient(135deg, #E0F2FE 0%, #BAE6FD 100%);
+      border: 4px solid var(--game-blue-tag);
+      border-radius: 24px;
+      padding: 22px;
+      margin-top: 20px;
+      display: none;
+    }
+
+    .bonus-panel.active {
+      display: block;
+      animation: popIn 0.25s ease-out;
+    }
+
+    @keyframes popIn {
+      from { transform: scale(0.96); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    /* Contestants' Row (Team Bidding Lecterns) */
+    .lecterns-section {
+      background: var(--game-blue-bg);
+      padding: 28px 20px 40px;
+      border-top: 6px dashed rgba(255, 255, 255, 0.85);
+    }
+
+    .lecterns-grid {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .lectern-card {
+      background: #FFFFFF;
+      border-radius: 26px;
+      padding: 22px;
+      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.14);
+      border: 4px solid transparent;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 14px;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+      position: relative;
+    }
+
+    .lectern-card.winner-lectern {
+      border-color: var(--game-yellow-bg);
+      outline: 4px solid #FFFFFF;
+      outline-offset: 4px;
+      background: #FFFDF4;
+      transform: translateY(-6px);
+    }
+
+    .lectern-card.overbid-lectern {
+      border-color: #EF4444;
+      background: #FEF2F2;
+      opacity: 0.92;
+    }
+
+    .team-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .team-name-badge {
+      font-size: 1.3rem;
+      font-weight: 900;
+      color: var(--game-brown-text);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .team-score-pill {
+      background: var(--game-blue-tag);
+      color: #FFFFFF;
+      font-weight: 900;
+      font-size: 1.15rem;
+      padding: 5px 14px;
+      border-radius: 9999px;
+    }
+
+    /* Digital Bid Display */
+    .digital-bid-screen {
+      background: #1E293B;
+      color: #FACC15;
+      border: 4px solid var(--game-brown-text);
+      border-radius: 18px;
+      padding: 14px;
+      text-align: center;
+      font-family: 'Courier New', Courier, monospace;
+    }
+
+    .digital-bid-label {
+      font-family: 'Noto Sans TC', sans-serif;
+      font-size: 0.85rem;
+      color: #94A3B8;
+      margin-bottom: 6px;
+      display: block;
+      font-weight: 700;
+    }
+
+    .bid-input-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .currency-prefix {
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: #38BDF8;
+    }
+
+    .bid-number-input {
+      width: 140px;
+      background: transparent;
+      border: none;
+      border-bottom: 3px solid #FACC15;
+      color: #FACC15;
+      font-size: 2rem;
+      font-weight: 900;
+      text-align: center;
+      font-family: 'Courier New', Courier, monospace;
+      outline: none;
+    }
+
+    .bid-number-input:disabled {
+      border-bottom-color: transparent;
+    }
+
+    .lectern-status {
+      min-height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 1.02rem;
+      border-radius: 12px;
+      padding: 6px 10px;
+      text-align: center;
+    }
+
+    .status-waiting {
+      background: #F1F5F9;
+      color: #475569;
+    }
+
+    .status-locked {
+      background: #E0F2FE;
+      color: var(--game-blue-tag);
+    }
+
+    .status-winner {
+      background: var(--game-yellow-bg);
+      color: var(--game-brown-text);
+    }
+
+    .status-exact {
+      background: var(--game-green-bg);
+      color: #FFFFFF;
+    }
+
+    .status-overbid {
+      background: #FEE2E2;
+      color: #DC2626;
+    }
+
+    .lectern-actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    .lectern-actions button {
+      flex: 1;
+      padding: 9px 12px;
+      border-radius: 9999px;
+      font-weight: 900;
+      border: 2px solid var(--game-brown-text);
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 0.95rem;
+    }
+
+    .btn-lock-bid {
+      background: var(--game-yellow-bg);
+      color: var(--game-brown-text);
+    }
+
+    .btn-lock-bid.locked {
+      background: var(--game-green-bg);
+      color: #FFFFFF;
+      border-color: #FFFFFF;
+    }
+
+    /* Alert Banner for All Overbid or Duplicate Bid */
+    .status-banner {
+      margin-top: 16px;
+      padding: 16px 22px;
+      border-radius: 20px;
+      font-size: 1.2rem;
+      font-weight: 900;
+      text-align: center;
+      display: none;
+    }
+
+    .status-banner.show {
+      display: block;
+      animation: popIn 0.25s ease-out;
+    }
+
+    .status-banner.overbid-alert {
+      background: var(--game-orange-bg);
+      color: #FFFFFF;
+      border: 3px solid #FFFFFF;
+    }
+
+    .status-banner.winner-alert {
+      background: var(--game-green-bg);
+      color: #FFFFFF;
+      border: 3px solid #FFFFFF;
+    }
+
+    /* Modals (QR Code, Rules, Question Editor, Host God-Mode, Final Podium) */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(30, 20, 14, 0.72);
+      backdrop-filter: blur(4px);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      z-index: 900;
+    }
+
+    .modal-backdrop.open {
+      display: flex;
+    }
+
+    .modal-card {
+      background: #FFFFFF;
+      color: var(--game-brown-text);
+      border-radius: 28px;
+      max-width: 780px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 28px;
+      border: 5px solid var(--game-yellow-bg);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 3px dashed #E2E8F0;
+      padding-bottom: 14px;
+      margin-bottom: 18px;
+    }
+
+    .modal-title {
+      font-size: 1.6rem;
+      font-weight: 900;
+    }
+
+    .close-btn {
+      background: #F1F5F9;
+      border: 2px solid var(--game-brown-text);
+      border-radius: 9999px;
+      padding: 6px 14px;
+      font-weight: 900;
+      cursor: pointer;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .form-field label {
+      font-size: 0.9rem;
+      font-weight: 900;
+    }
+
+    .form-field input, .form-field select, .form-field textarea {
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 2px solid #CBD5E1;
+      font-family: inherit;
+      font-size: 0.98rem;
+      font-weight: 700;
+    }
+
+    .item-list-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 12px;
+      font-size: 0.92rem;
+    }
+
+    .item-list-table th, .item-list-table td {
+      border-bottom: 1px solid #E2E8F0;
+      padding: 10px 8px;
+      text-align: left;
+    }
+
+    .item-list-table th {
+      background: #F8FAFC;
+      font-weight: 900;
+    }
+
+    /* Footer */
+    .game-footer {
+      background: var(--game-taupe-bg);
+      color: #FFFFFF;
+      text-align: center;
+      padding: 20px;
+      margin-top: auto;
+      font-weight: 700;
+      border-top: 6px dashed rgba(255, 255, 255, 0.85);
+    }
+
+    #playerApp { display: none; }
+
+    body.player-mode .top-navbar,
+    body.player-mode main,
+    body.player-mode .lecterns-section,
+    body.player-mode .game-footer,
+    body.player-mode .modal-backdrop { display: none !important; }
+
+    body.player-mode #playerApp {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      width: min(520px, 100%);
+      margin: 0 auto;
+      padding: 28px 20px 48px;
+    }
+
+    .player-title {
+      font-size: 2rem;
+      font-weight: 900;
+      text-align: center;
+    }
+
+    .player-teams {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .player-bid-input {
+      width: 100%;
+      font-size: 2rem;
+      font-weight: 900;
+      padding: 14px 16px;
+      border-radius: 16px;
+      border: 3px solid var(--game-brown-text);
+      font-family: inherit;
+    }
+
+    #roomLivePill:empty { display: none; }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation Bar (Neutral Cross-Fellowship Branding) -->
+  <header class="top-navbar">
+    <div class="brand-logo">
+      <span>🏷️ 估價王 The Price is Right HK</span>
+      <span class="brand-sub">惠康/百佳 ‧ 豐澤/百老匯 最低價準則</span>
+    </div>
+    <nav class="nav-pills">
+      <button class="pill-btn cta-blue" onclick="openRoomModal()">📱 手機競投</button>
+      <button class="pill-btn" onclick="openModal('qrModal')">📱 QR Code</button>
+      <button class="pill-btn" onclick="openModal('rulesModal')">📖 規則</button>
+      <button class="pill-btn" onclick="openModal('editorModal')">⚙️ 設定/題庫</button>
+      <button class="pill-btn host-btn" onclick="openModal('hostModal')">🛠️ 主持後台</button>
+      <button class="pill-btn" onclick="confirmResetGame()">🔄 重開</button>
+    </nav>
+  </header>
+
+  <!-- Main Product & Price Reveal Section -->
+  <main class="game-section">
+    <div class="section-badge-wrap">
+      <div class="section-badge" id="stageBadge">
+        🛒 第一階段：競投台大對決 (One Bid)
+      </div>
+    </div>
+
+    <div class="game-card active-ring">
+      <div class="product-header">
+        <div style="display:flex; flex-wrap:wrap; gap:10px; align-items:center;">
+          <span class="category-pill supermarket" id="categoryPill">🛒 超市格價對決（惠康 vs 百佳）</span>
+          <span class="round-counter" id="roundCounterText">第 1 / 12 題</span>
+        </div>
+        <div style="display:flex; gap:8px; flex-wrap:wrap;">
+          <button class="pill-btn" onclick="toggleBlindMode()" id="blindModeBtn">👁️ 明標模式（點擊切換暗標）</button>
+          <button class="pill-btn" onclick="playComeOnDownSound()">🎺 播放出場音樂</button>
+        </div>
+      </div>
+
+      <div class="product-stage">
+        <!-- Left: Product Visual & Spec -->
+        <div class="product-Showcase-box">
+          <div class="product-emoji" id="productEmoji">🧃</div>
+          <h1 class="product-title" id="productTitle">維他 檸檬茶飲品</h1>
+          <p class="product-spec" id="productSpec">規格：250毫升 x 6包裝（原味）</p>
+          <div class="product-hint" id="productHint">💡 格價準則：以惠康及百佳單件標價較低者為準（唔計買二送一）</div>
+        </div>
+
+        <!-- Right: Two Store Comparison & Official Lowest Target -->
+        <div class="comparison-panel">
+          <div style="background:#FFF8EB; border:2px solid var(--game-yellow-bg); border-radius:16px; padding:12px 16px; font-weight:700; font-size:0.98rem;">
+            📌 <strong>香港格價鐵律：</strong>同款貨品並列兩間連鎖店標價，系統自動取 <strong>最低價者</strong> 為本題標準答案！出價最接近而<strong>唔爆煲（不高於最低價）</strong>即贏！
+          </div>
+
+          <!-- Store 1 & Store 2 Cards -->
+          <div class="store-cards-grid">
+            <div class="store-card" id="storeCardA">
+              <div class="store-name" id="storeNameA">🏪 惠康 Wellcome</div>
+              <div class="store-price-mask" id="storePriceA">HK$ ???</div>
+              <div id="storeBadgeA"></div>
+            </div>
+            <div class="store-card" id="storeCardB">
+              <div class="store-name" id="storeNameB">🏪 百佳 PARKnSHOP</div>
+              <div class="store-price-mask" id="storePriceB">HK$ ???</div>
+              <div id="storeBadgeB"></div>
+            </div>
+          </div>
+
+          <!-- Official Lowest Price Banner -->
+          <div class="official-lowest-banner">
+            <div>
+              <div class="official-lowest-label">🎯 官方最低實價 (Actual Lowest Price)</div>
+              <div style="font-size:0.9rem; font-weight:700;" id="priceSourceNote">揭曉後顯示兩間分店格價差距與消委會/門市參考來源</div>
+            </div>
+            <div class="official-lowest-value" id="officialLowestDisplay">HK$ ???</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bonus Mini-Game Panel (Stage 2: Guess Which Store Has Lowest Price / Hi-Lo) -->
+      <div class="bonus-panel" id="bonusPanel">
+        <div style="display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:12px; margin-bottom:12px;">
+          <h3 style="font-size:1.35rem; font-weight:900; color:var(--game-blue-tag);">
+            🎰 第二階段：格價王 Bonus 挑戰（由本局勝出組別作答，答中再加 +100 分！）
+          </h3>
+          <span style="background:#FFFFFF; padding:4px 12px; border-radius:9999px; font-weight:900; font-size:0.95rem;" id="bonusWinnerTag">
+            挑戰組別：等待揭曉
+          </span>
+        </div>
+        <p style="font-weight:700; margin-bottom:14px; font-size:1.05rem;" id="bonusQuestionText">
+          問題：究竟呢個「全場最低價」係由邊間商戶提供？請勝出組別揀選後揭曉兩間分店詳細標價！
+        </p>
+        <div style="display:flex; flex-wrap:wrap; gap:12px;" id="bonusButtonsWrap">
+          <button class="pill-btn cta-blue" id="bonusBtnA" onclick="resolveBonusChoice('A')">👈 係 惠康 平啲！</button>
+          <button class="pill-btn cta-orange" id="bonusBtnB" onclick="resolveBonusChoice('B')">👉 係 百佳 平啲！</button>
+          <button class="pill-btn" id="bonusBtnTie" onclick="resolveBonusChoice('TIE')">🤝 兩間同價！</button>
+        </div>
+        <div id="bonusResultText" style="margin-top:12px; font-weight:900; font-size:1.15rem;"></div>
+      </div>
+
+      <!-- Status Alert Banner -->
+      <div class="status-banner" id="statusBanner"></div>
+
+      <!-- Action Toolbar -->
+      <div class="stage-toolbar">
+        <div style="display:flex; flex-wrap:wrap; gap:10px; align-items:center;">
+          <div class="timer-pill" id="timerDisplay">⏱️ 30s</div>
+          <button class="pill-btn" onclick="toggleTimer()" id="timerToggleBtn">▶️ 開始倒數</button>
+          <button class="pill-btn" onclick="resetTimer(30)">🔄 重置 30秒</button>
+        </div>
+
+        <div style="display:flex; flex-wrap:wrap; gap:12px; align-items:center;">
+          <button class="pill-btn" onclick="prevQuestion()">⬅️ 上一題</button>
+          <button class="pill-btn cta-pink" id="revealBtn" onclick="revealLowestPrice()">🔔 揭曉最低實價</button>
+          <button class="pill-btn cta-green" onclick="nextQuestion()">⏭️ 下一題貨品</button>
+          <button class="pill-btn bundle-btn" onclick="jumpToShowcase()">🌟 終極大櫥窗</button>
+          <button class="pill-btn host-btn" onclick="openPodiumModal()">🏆 完場頒獎台</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Contestants' Row (Bidding Lecterns & Scoreboard) -->
+  <section class="lecterns-section">
+    <div class="section-badge-wrap">
+      <div class="section-badge yellow">
+        🎙️ 競投台與各組實時積分榜 (Contestants' Row)
+      </div>
+    </div>
+
+    <div style="max-width:1280px; margin:0 auto 18px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; color:#FFFFFF; font-weight:700;">
+      <div id="overbidCeilingHint">📌 規則提示：各組出價不可重複；最接近最低實價而唔爆煲即贏 +100 分（一矢中的獎 +300 分）！</div>
+      <span class="pill-btn" id="roomLivePill" style="cursor:default;"></span>
+      <div style="display:flex; gap:8px;">
+        <button class="pill-btn" onclick="lockAllBids()">🔒 一鍵鎖定全場出價</button>
+        <button class="pill-btn" onclick="clearCurrentBids()">🧹 清空本輪出價</button>
+        <button class="pill-btn" onclick="addNewTeamPrompt()">➕ 新增組別</button>
+      </div>
+    </div>
+
+    <div class="lecterns-grid" id="lecternsGrid">
+      <!-- Dynamically rendered team bidding lecterns -->
+    </div>
+  </section>
+
+  <section id="playerApp" aria-label="手機競投">
+    <h1 class="player-title">🏷️ 估價王</h1>
+    <p style="font-weight:700; text-align:center;">揀你嗰組，輸入銀碼，送去大電視。呢頁睇唔到答案。</p>
+    <div id="playerJoin" style="display:flex; gap:10px; flex-wrap:wrap;">
+      <input id="playerRoomInput" class="player-bid-input" maxlength="4" placeholder="房間碼，例如 AB12" style="flex:1; font-size:1.4rem;" />
+      <button class="pill-btn cta-pink" onclick="joinTypedRoom()">入房</button>
+    </div>
+    <div id="playerPlay" hidden>
+      <div id="playerTeams" class="player-teams"></div>
+      <input id="playerBidInput" class="player-bid-input" type="number" inputmode="decimal" min="0" step="0.1" placeholder="HK$" />
+      <button class="pill-btn cta-pink" onclick="submitPlayerBid()">送去大電視</button>
+      <p id="playerSent" style="font-weight:900; font-size:1.15rem;"></p>
+      <p id="playerStatus" style="font-weight:700;"></p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="game-footer">
+    🏷️ 估價王 The Price is Right HK｜跨團契通用破冰遊戲系統｜格價參考：惠康 ‧ 百佳 ‧ 豐澤 ‧ 百老匯（以最低價為準）
+  </footer>
+
+  <!-- MODAL 1: QR Code Modal -->
+  <div class="modal-backdrop" id="qrModal">
+    <div class="modal-card" style="text-align:center; max-width:480px;">
+      <div class="modal-header">
+        <div class="modal-title">📱 掃描打開《估價王》</div>
+        <button class="close-btn" onclick="closeModal('qrModal')">✕ 關閉</button>
+      </div>
+      <p id="qrNote" style="font-weight:700; margin-bottom:18px;">
+        未開房間。撳「手機競投」之後，呢度先會出團友出價頁嘅 QR。
+      </p>
+      <div id="qrcodeContainer" style="display:flex; justify-content:center; margin:20px auto; padding:16px; background:#FFF; border:4px solid var(--game-yellow-bg); border-radius:20px; width:fit-content;"></div>
+      <p id="qrUrlText" style="font-size:0.9rem; word-break:break-all; background:#F1F5F9; padding:10px; border-radius:12px; font-weight:700;"></p>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="roomModal">
+    <div class="modal-card" style="text-align:center; max-width:480px;">
+      <div class="modal-header">
+        <div class="modal-title">📱 手機競投</div>
+        <button class="close-btn" onclick="closeModal('roomModal')">✕ 關閉</button>
+      </div>
+      <p style="font-weight:700; margin-bottom:14px;">團友掃碼入房，揀自己組，銀碼會即時出現喺大電視。答案仍然只喺主持畫面。</p>
+      <div id="roomCodeText" style="font-size:2.4rem; font-weight:900; letter-spacing:0.2em; margin-bottom:8px;"></div>
+      <div id="roomQr" style="display:flex; justify-content:center; margin:12px auto; padding:16px; background:#FFF; border:4px solid var(--game-yellow-bg); border-radius:20px; width:fit-content;"></div>
+      <p id="roomUrlText" style="font-size:0.85rem; word-break:break-all; font-weight:700;"></p>
+      <p id="roomStatus" style="font-weight:900; margin:12px 0;"></p>
+      <div style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
+        <button class="pill-btn" onclick="startHostRoom()">🔄 開新房間碼</button>
+        <button class="pill-btn host-btn" onclick="closeHostRoom()">關閉房間</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 2: Rules Modal -->
+  <div class="modal-backdrop" id="rulesModal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div class="modal-title">📖 《估價王 The Price is Right HK》破冰規則</div>
+        <button class="close-btn" onclick="closeModal('rulesModal')">✕ 關閉</button>
+      </div>
+      <div style="line-height:1.75; font-weight:700; display:flex; flex-direction:column; gap:14px;">
+        <div style="background:#FFF8EB; padding:16px; border-radius:18px; border-left:6px solid var(--game-yellow-bg);">
+          <h4 style="font-size:1.15rem; margin-bottom:6px;">1️⃣ 香港地道「最低價為準」原則</h4>
+          <p>• <strong>超市日常組：</strong>同款貨品對比 <strong>惠康 Wellcome</strong> 及 <strong>百佳 PARKnSHOP</strong>，以兩者之中<strong>較平嘅單件標價</strong>為官方實價。</p>
+          <p>• <strong>電器數碼組：</strong>同款產品對比 <strong>豐澤 Fortress</strong> 及 <strong>百老匯 Broadway</strong>，同樣以兩者之中<strong>較低標價</strong>為準。</p>
+        </div>
+        <div style="background:#F0F9FF; padding:16px; border-radius:18px; border-left:6px solid var(--game-blue-tag);">
+          <h4 style="font-size:1.15rem; margin-bottom:6px;">2️⃣ 第一階段：競投台大對決 (Contestants' Row)</h4>
+          <p>• 各組喺競投台輸入心目中嘅價錢（明標模式下不可與其他組別同價）。</p>
+          <p>• <strong>最接近官方最低實價而又唔爆煲（Without Going Over）</strong>嘅組別贏得該局，即時獲得 <strong>+100 分</strong>！</p>
+          <p>• <strong>🎯 一矢中的 (Exact Bid)：</strong>如果出價同最低實價一毫子都唔差，額外重獎合共 <strong>+300 分</strong>！</p>
+          <p>• <strong>💥 全場爆煲 (All Overbid)：</strong>如果全部組別出價都高過實際最低價，全場擦掉重投，且新一輪出價必須低於上一輪嘅最低出價！</p>
+        </div>
+        <div style="background:#ECFDF3; padding:16px; border-radius:18px; border-left:6px solid var(--game-green-bg);">
+          <h4 style="font-size:1.15rem; margin-bottom:6px;">3️⃣ 第二階段：格價王 Bonus 挑戰 & 終極大櫥窗</h4>
+          <p>• <strong>格價王 Bonus：</strong>每題揭曉最低實價後，勝出組別可即時挑戰「究竟係邊間商戶（惠康定百佳／豐澤定百老匯）做緊呢個最低價？」，答中再加 <strong>+100 分</strong>，隨後揭曉兩間分店完整標價！</p>
+          <p>• <strong>🌟 終極大櫥窗 (The Showcase)：</strong>最後一題為「團契聚餐＋家電大禮包」，最接近而唔爆煲組別獨得 <strong>+500 分</strong>（誤差 $50 內雙倍暴擊 <strong>+800 分</strong>）！</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 3: Question & Price Bank Editor Modal -->
+  <div class="modal-backdrop" id="editorModal">
+    <div class="modal-card" style="max-width:920px;">
+      <div class="modal-header">
+        <div class="modal-title">⚙️ 設定及香港格價題庫管理（自動取最低價）</div>
+        <button class="close-btn" onclick="closeModal('editorModal')">✕ 關閉</button>
+      </div>
+
+      <div style="background:#F8FAFC; padding:18px; border-radius:20px; margin-bottom:20px; border:2px solid #E2E8F0;">
+        <h4 style="margin-bottom:12px; font-size:1.1rem;">➕ 新增 / 編輯格價題目（系統自動以 A、B 店較平者為準）</h4>
+        <div class="form-grid">
+          <div class="form-field">
+            <label>分類</label>
+            <select id="editCategory" onchange="updateStoreLabelsInForm()">
+              <option value="supermarket">🛒 超市（惠康 vs 百佳）</option>
+              <option value="electronics">🔌 電器（豐澤 vs 百老匯）</option>
+              <option value="showcase">🌟 終極大櫥窗 (Showcase)</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label>Emoji 圖示</label>
+            <input type="text" id="editEmoji" value="🛒" placeholder="例如：🍜" />
+          </div>
+          <div class="form-field" style="grid-column: span 2;">
+            <label>貨品名稱</label>
+            <input type="text" id="editName" placeholder="例如：卡樂B 熱浪薯片" />
+          </div>
+          <div class="form-field" style="grid-column: span 2;">
+            <label>規格 / 容量描述</label>
+            <input type="text" id="editSpec" placeholder="例如：105克 大包裝" />
+          </div>
+          <div class="form-field">
+            <label id="labelStoreA">惠康 Wellcome 標價 (HK$)</label>
+            <input type="number" step="0.1" id="editPriceA" placeholder="例如：16.5" />
+          </div>
+          <div class="form-field">
+            <label id="labelStoreB">百佳 PARKnSHOP 標價 (HK$)</label>
+            <input type="number" step="0.1" id="editPriceB" placeholder="例如：15.9" />
+          </div>
+          <div class="form-field" style="grid-column: span 2;">
+            <label>格價備註 / 提示</label>
+            <input type="text" id="editNote" placeholder="例如：參考消委會網上格價最新單件價" />
+          </div>
+        </div>
+        <div style="display:flex; gap:10px; flex-wrap:wrap;">
+          <button class="pill-btn cta-green" onclick="addCustomQuestion()">💾 加入題庫</button>
+          <button class="pill-btn" onclick="exportQuestionsJSON()">📤 匯出題庫 JSON</button>
+          <button class="pill-btn" onclick="triggerImportJSON()">📥 匯入題庫 JSON</button>
+          <input type="file" id="importJsonInput" accept=".json" style="display:none;" onchange="handleImportJSON(event)" />
+          <button class="pill-btn" onclick="restoreDefaultQuestions()">🔄 還原預設 12 題香港題庫</button>
+        </div>
+      </div>
+
+      <h4 style="margin-bottom:8px;">📋 現有題庫列表（點擊可跳題或刪除）</h4>
+      <div style="overflow-x:auto;">
+        <table class="item-list-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>貨品</th>
+              <th>商戶 A 價</th>
+              <th>商戶 B 價</th>
+              <th>🎯 最低準則價</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody id="questionTableBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 4: Host God-Mode Controls Modal -->
+  <div class="modal-backdrop" id="hostModal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div class="modal-title">🛠️ 主持後台 (Host God-Mode)</div>
+        <button class="close-btn" onclick="closeModal('hostModal')">✕ 關閉</button>
+      </div>
+
+      <div style="background:#FEF3C7; border:2px solid var(--game-yellow-bg); padding:14px; border-radius:16px; margin-bottom:18px; font-weight:700;">
+        👀 <strong>本題偷睇答案（只限主持知道）：</strong>
+        <span id="hostPeekAnswer" style="color:var(--game-pink-btn); font-size:1.15rem; font-weight:900;"></span>
+      </div>
+
+      <h4 style="margin-bottom:10px;">👥 各組名稱與分數手動調整（God-Mode Override）</h4>
+      <div id="hostTeamsEditor" style="display:flex; flex-direction:column; gap:10px; margin-bottom:20px;"></div>
+
+      <div style="display:flex; flex-wrap:wrap; gap:10px; padding-top:14px; border-top:2px dashed #E2E8F0;">
+        <button class="pill-btn" onclick="addNewTeamPrompt()">➕ 新增組別</button>
+        <button class="pill-btn cta-orange" onclick="forceRevealBothStores()">🔓 強制完全揭曉兩間分店價錢</button>
+        <button class="pill-btn host-btn" onclick="openPodiumModal()">🏆 直接進入頒獎台結算</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 5: Winner Podium Modal -->
+  <div class="modal-backdrop" id="podiumModal">
+    <div class="modal-card" style="text-align:center; background:linear-gradient(180deg, #FFFDF5 0%, #FEF3C7 100%);">
+      <div class="modal-header">
+        <div class="modal-title">🏆 《估價王 The Price is Right HK》總結算頒獎台</div>
+        <button class="close-btn" onclick="closeModal('podiumModal')">✕ 關閉</button>
+      </div>
+      <div style="font-size:4rem; margin:8px 0;">🎉👑🛒</div>
+      <h2 id="podiumChampionText" style="font-size:2rem; font-weight:900; margin-bottom:18px; color:var(--game-pink-btn);"></h2>
+      <div id="podiumStandingsList" style="display:flex; flex-direction:column; gap:12px; max-width:520px; margin:0 auto 24px;"></div>
+      <button class="pill-btn cta-pink" onclick="closeModal('podiumModal')">返回主畫面</button>
+    </div>
+  </div>
+
+  <script>
+    /*************************************************************************
+     * 1. VERIFIED HK SUPERMARKET (惠康/百佳) & ELECTRONICS (豐澤/百老匯) BANK
+     * Rule: Official Price = Math.min(priceA, priceB)
+     *************************************************************************/
+    const DEFAULT_ITEMS = [
+      {
+        id: 'hk-1',
+        category: 'supermarket',
+        emoji: '🧃',
+        name: '維他 檸檬茶飲品 (原味)',
+        spec: '250毫升 x 6包裝 (一排)',
+        storeAName: '惠康 Wellcome',
+        priceA: 18.9,
+        storeBName: '百佳 PARKnSHOP',
+        priceB: 19.0,
+        note: '參考消委會網上格價紀錄：惠康單排 $18.9 vs 百佳單排 $19.0（以最低價 $18.9 為準）'
+      },
+      {
+        id: 'hk-2',
+        category: 'supermarket',
+        emoji: '🍜',
+        name: '出前一丁 北海道小麥粉麻油味即食麵',
+        spec: '5包裝 (一袋)',
+        storeAName: '惠康 Wellcome',
+        priceA: 24.5,
+        storeBName: '百佳 PARKnSHOP',
+        priceB: 21.0,
+        note: '參考2026年10月超市推廣折算價：惠康 $24.5 vs 百佳特價平均 $21.0/袋（以最低價 $21.0 為準）'
+      },
+      {
+        id: 'hk-3',
+        category: 'supermarket',
+        emoji: '🌾',
+        name: '金象牌 頂上茉莉香米',
+        spec: '5公斤袋裝',
+        storeAName: '惠康 Wellcome',
+        priceA: 72.9,
+        storeBName: '百佳 PARKnSHOP',
+        priceB: 76.9,
+        note: '參考消委會格價資訊通7天紀錄：惠康 $72.9 vs 百佳 $76.9（以最低價 $72.9 為準）'
+      },
+      {
+        id: 'hk-4',
+        category: 'electronics',
+        emoji: '❄️',
+        name: 'FORTRESS 豐澤牌 3/4匹 R32 窗口式冷氣機',
+        spec: '淨冷型號 (標準安裝另計)',
+        storeAName: '豐澤 Fortress',
+        priceA: 1890,
+        storeBName: '百老匯 Broadway',
+        priceB: 2180,
+        note: '參考2026年豐澤大減價至DOPE價 HK$1,890（對比同級門市標價 $2,180，以最低價 $1,890 為準）'
+      },
+      {
+        id: 'hk-5',
+        category: 'supermarket',
+        emoji: '🥫',
+        name: '長城牌 火腿豬肉 (午餐肉)',
+        spec: '340克 經典罐裝',
+        storeAName: '惠康 Wellcome',
+        priceA: 25.9,
+        storeBName: '百佳 PARKnSHOP',
+        priceB: 26.9,
+        note: '打邊爐夾麵包必備：惠康 $25.9 vs 百佳 $26.9（以最低價 $25.9 為準）'
+      },
+      {
+        id: 'hk-6',
+        category: 'electronics',
+        emoji: '🍟',
+        name: 'Philips 飛利浦 透視窗健康空氣炸鍋',
+        spec: '4.2公升 (HD9257 型號)',
+        storeAName: '豐澤 Fortress',
+        priceA: 898,
+        storeBName: '百老匯 Broadway',
+        priceB: 868,
+        note: '人氣廚房家電：豐澤標價 $898 vs 百老匯推廣價 $868（以最低價 $868 為準）'
+      },
+      {
+        id: 'hk-7',
+        category: 'supermarket',
+        emoji: '🧻',
+        name: '維達 4D立體壓花衛生紙',
+        spec: '10卷裝 (每卷200克)',
+        storeAName: '惠康 Wellcome',
+        priceA: 34.9,
+        storeBName: '百佳 PARKnSHOP',
+        priceB: 33.9,
+        note: '屋企日用品格價：惠康 $34.9 vs 百佳 $33.9（以最低價 $33.9 為準）'
+      },
+      {
+        id: 'hk-8',
+        category: 'electronics',
+        emoji: '🌬️',
+        name: '飛歌 Philco 3/4匹 變頻窗口式冷氣機',
+        spec: '一級能源標籤 變頻淨冷',
+        storeAName: '豐澤 Fortress',
+        priceA: 3198,
+        storeBName: '百老匯 Broadway',
+        priceB: 3480,
+        note: '參考2026年豐澤限定減價 HK$3,198 vs 百老匯 $3,480（以最低價 $3,198 為準）'
+      },
+      {
+        id: 'hk-9',
+        category: 'supermarket',
+        emoji: '🥟',
+        name: '灣仔碼頭 鮮蝦雲吞',
+        spec: '20粒家庭裝 (300克)',
+        storeAName: '惠康 Wellcome',
+        priceA: 38.9,
+        storeBName: '百佳 PARKnSHOP',
+        priceB: 38.9,
+        note: '兩大超市同步定價：惠康 $38.9 vs 百佳 $38.9（兩間同價，最低價 $38.9）'
+      },
+      {
+        id: 'hk-10',
+        category: 'electronics',
+        emoji: '💇‍♀️',
+        name: 'Panasonic 納米離子護髮風筒',
+        spec: 'EH-NA9N 礦物納米離子型號',
+        storeAName: '豐澤 Fortress',
+        priceA: 1480,
+        storeBName: '百老匯 Broadway',
+        priceB: 1398,
+        note: '日本熱賣護髮風筒：豐澤 $1,480 vs 百老匯減價 $1,398（以最低價 $1,398 為準）'
+      },
+      {
+        id: 'hk-11',
+        category: 'electronics',
+        emoji: '📺',
+        name: 'LG OLED AI B6 4K 智能電視 (2026年款)',
+        spec: '55吋 OLED 4K AI 電視',
+        storeAName: '豐澤 Fortress',
+        priceA: 10980,
+        storeBName: '百老匯 Broadway',
+        priceB: 11480,
+        note: '參考2026年豐澤 Mid-Year Sale 價 HK$10,980 起（對比建議價 $13,980 及百老匯 $11,480）'
+      },
+      {
+        id: 'hk-12',
+        category: 'showcase',
+        emoji: '🎁',
+        name: '【終極大櫥窗 Showcase】團契聚餐＋影音家電大禮包',
+        spec: '包：金象米8kg x2包 + 出前一丁5包裝 x6袋 + 飛利浦氣炸鍋 + LG OLED AI B6 4K 電視',
+        storeAName: '惠康＋豐澤 組合總價',
+        priceA: 12150,
+        storeBName: '百佳＋百老匯 組合總價',
+        priceB: 12640,
+        note: '🌟 終極大櫥窗壓軸大獎！最接近最低總價 HK$12,150 而唔爆煲獨得 +500 分（誤差 $50 內雙倍暴擊 +800 分）！'
+      }
+    ];
+
+    const STORAGE_KEY = 'kyc_neutral_price_is_right_hk_v1';
+
+    let gameState = {
+      currentIndex: 0,
+      blindMode: false,
+      stage: 'BIDDING', // 'BIDDING' | 'LOWEST_REVEALED' | 'FULL_REVEALED'
+      overbidCeiling: null,
+      roundWinnerTeamId: null,
+      bonusCompleted: false,
+      bonusMessage: '',
+      bonusOk: false,
+      pendingAwards: [],
+      items: JSON.parse(JSON.stringify(DEFAULT_ITEMS)),
+      teams: [
+        { id: 't1', name: '🦁 第一組', score: 0, bid: '', locked: false, status: 'waiting' },
+        { id: 't2', name: '🐼 第二組', score: 0, bid: '', locked: false, status: 'waiting' },
+        { id: 't3', name: '🦊 第三組', score: 0, bid: '', locked: false, status: 'waiting' },
+        { id: 't4', name: '🐸 第四組', score: 0, bid: '', locked: false, status: 'waiting' }
+      ]
+    };
+
+    let timerSeconds = 30;
+    let timerInterval = null;
+
+    /*************************************************************************
+     * 2. WEB AUDIO API SYNTHESIZER (Zero External MP3 Dependencies)
+     *************************************************************************/
+    const AudioCtx = window.AudioContext || window.webkitAudioContext;
+    let audioCtx = null;
+
+    function ensureAudio() {
+      if (!audioCtx) audioCtx = new AudioCtx();
+      if (audioCtx.state === 'suspended') audioCtx.resume();
+    }
+
+    function playTone(freq, type, duration, delay = 0, gainVal = 0.16) {
+      try {
+        ensureAudio();
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = type;
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime + delay);
+        gain.gain.setValueAtTime(gainVal, audioCtx.currentTime + delay);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + delay + duration);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start(audioCtx.currentTime + delay);
+        osc.stop(audioCtx.currentTime + delay + duration);
+      } catch (e) {}
+    }
+
+    function playBidLockSound() {
+      playTone(660, 'sine', 0.1, 0, 0.15);
+      playTone(880, 'triangle', 0.14, 0.08, 0.18);
+    }
+
+    function playComeOnDownSound() {
+      const notes = [523.25, 659.25, 783.99, 1046.5, 783.99, 1046.5];
+      notes.forEach((n, idx) => playTone(n, 'triangle', 0.18, idx * 0.13, 0.2));
+    }
+
+    function playVictoryBell() {
+      [783.99, 987.77, 1174.66, 1567.98].forEach((n, idx) => {
+        playTone(n, 'sine', 0.24, idx * 0.1, 0.22);
+      });
+    }
+
+    function playExactJackpotSound() {
+      for (let i = 0; i < 6; i++) {
+        playTone(1318.5, 'sine', 0.1, i * 0.09, 0.22);
+      }
+      playTone(1567.98, 'triangle', 0.45, 0.56, 0.25);
+    }
+
+    // Classic Price is Right Overbid Losing Horn ("Bwah-bwah-ba-da-daaa")
+    function playOverbidHorn() {
+      playTone(311.13, 'sawtooth', 0.28, 0, 0.2);
+      playTone(293.66, 'sawtooth', 0.28, 0.3, 0.2);
+      playTone(277.18, 'sawtooth', 0.28, 0.6, 0.2);
+      playTone(261.63, 'sawtooth', 0.65, 0.9, 0.24);
+    }
+
+    /*************************************************************************
+     * 3. CORE HELPER FUNCTIONS & STATE PERSISTENCE
+     *************************************************************************/
+    function saveState() {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(gameState));
+      } catch (e) {}
+    }
+
+    function loadState() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (raw) {
+          const parsed = JSON.parse(raw);
+          if (parsed && Array.isArray(parsed.items) && parsed.items.length > 0 && Array.isArray(parsed.teams)) {
+            gameState = parsed;
+            if (!Array.isArray(gameState.pendingAwards)) gameState.pendingAwards = [];
+            if (typeof gameState.bonusCompleted !== 'boolean') gameState.bonusCompleted = false;
+            if (typeof gameState.bonusMessage !== 'string') gameState.bonusMessage = '';
+            if (typeof gameState.bonusOk !== 'boolean') gameState.bonusOk = false;
+          }
+        }
+      } catch (e) {}
+    }
+
+    function getCurrentItem() {
+      if (gameState.currentIndex >= gameState.items.length) {
+        gameState.currentIndex = 0;
+      }
+      return gameState.items[gameState.currentIndex];
+    }
+
+    function getLowestPrice(item) {
+      return Math.min(Number(item.priceA), Number(item.priceB));
+    }
+
+    function getCheaperStoreKey(item) {
+      const a = Number(item.priceA);
+      const b = Number(item.priceB);
+      if (a < b) return 'A';
+      if (b < a) return 'B';
+      return 'TIE';
+    }
+
+    function formatHKD(val) {
+      const num = Number(val);
+      if (isNaN(num)) return 'HK$ ???';
+      return Number.isInteger(num) ? `HK$ ${num.toLocaleString('en-US')}` : `HK$ ${num.toFixed(1)}`;
+    }
+
+    function esc(value) {
+      return String(value ?? '').replace(/[&<>"']/g, (ch) => ({
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#39;'
+      }[ch]));
+    }
+
+    function awardPoints(team, points) {
+      if (!team || !points) return;
+      team.score += points;
+      gameState.pendingAwards.push({ teamId: team.id, points });
+    }
+
+    function commitRoundScores() {
+      gameState.pendingAwards = [];
+    }
+
+    function undoRoundScores() {
+      for (const award of gameState.pendingAwards || []) {
+        const team = gameState.teams.find((t) => t.id === award.teamId);
+        if (team) team.score = Math.max(0, team.score - award.points);
+      }
+      gameState.pendingAwards = [];
+    }
+
+    /*************************************************************************
+     * 4. UI RENDERING ENGINE
+     *************************************************************************/
+    function renderAll() {
+      const item = getCurrentItem();
+      const lowest = getLowestPrice(item);
+
+      // Update Top Badges
+      const catPill = document.getElementById('categoryPill');
+      if (item.category === 'supermarket') {
+        catPill.className = 'category-pill supermarket';
+        catPill.textContent = '🛒 超市格價對決（惠康 vs 百佳）';
+      } else if (item.category === 'electronics') {
+        catPill.className = 'category-pill electronics';
+        catPill.textContent = '🔌 電器格價對決（豐澤 vs 百老匯）';
+      } else {
+        catPill.className = 'category-pill showcase';
+        catPill.textContent = '🌟 終極大櫥窗 (The Showcase Finale)';
+      }
+
+      document.getElementById('roundCounterText').textContent = `第 ${gameState.currentIndex + 1} / ${gameState.items.length} 題`;
+      document.getElementById('blindModeBtn').textContent = gameState.blindMode
+        ? '🙈 暗標模式（鎖定後隱藏銀碼）'
+        : '👁️ 明標模式（點擊切換暗標）';
+
+      // Product Details
+      document.getElementById('productEmoji').textContent = item.emoji || '🏷️';
+      document.getElementById('productTitle').textContent = item.name;
+      document.getElementById('productSpec').textContent = `規格：${item.spec}`;
+      document.getElementById('productHint').textContent = item.category === 'showcase'
+        ? '🌟 壓軸大獎：最接近最低總價唔爆煲贏 +500 分（誤差 $50 內雙倍 +800 分）！'
+        : `💡 格價準則：對比 ${item.storeAName} 及 ${item.storeBName}，以最低單件標價為準！`;
+
+      // Store Cards
+      document.getElementById('storeNameA').textContent = `🏪 ${item.storeAName}`;
+      document.getElementById('storeNameB').textContent = `🏪 ${item.storeBName}`;
+
+      const cardA = document.getElementById('storeCardA');
+      const cardB = document.getElementById('storeCardB');
+      const badgeA = document.getElementById('storeBadgeA');
+      const badgeB = document.getElementById('storeBadgeB');
+
+      cardA.className = 'store-card';
+      cardB.className = 'store-card';
+      badgeA.innerHTML = '';
+      badgeB.innerHTML = '';
+
+      if (gameState.stage === 'BIDDING') {
+        document.getElementById('stageBadge').textContent = item.category === 'showcase'
+          ? '🌟 第三階段：終極大櫥窗競投 (The Showcase)'
+          : '🛒 第一階段：競投台大對決 (One Bid)';
+        document.getElementById('storePriceA').textContent = 'HK$ ???';
+        document.getElementById('storePriceB').textContent = 'HK$ ???';
+        document.getElementById('officialLowestDisplay').textContent = 'HK$ ???';
+        document.getElementById('priceSourceNote').textContent = '等待各組鎖定出價後揭曉官方最低實價';
+      } else if (gameState.stage === 'LOWEST_REVEALED') {
+        document.getElementById('stageBadge').textContent = '🎰 第二階段：格價王 Bonus 挑戰（估邊間最平）';
+        document.getElementById('storePriceA').textContent = 'HK$ ???';
+        document.getElementById('storePriceB').textContent = 'HK$ ???';
+        document.getElementById('officialLowestDisplay').textContent = formatHKD(lowest);
+        document.getElementById('priceSourceNote').textContent = '已揭曉最低實價！完成下方 Bonus 挑戰即揭曉兩間分店個別標價！';
+      } else if (gameState.stage === 'FULL_REVEALED') {
+        document.getElementById('stageBadge').textContent = '🏆 本局格價完全揭曉';
+        document.getElementById('storePriceA').textContent = formatHKD(item.priceA);
+        document.getElementById('storePriceB').textContent = formatHKD(item.priceB);
+        document.getElementById('officialLowestDisplay').textContent = formatHKD(lowest);
+        document.getElementById('priceSourceNote').textContent = item.note || '已完成兩間商戶格價對比';
+
+        const cheaperKey = getCheaperStoreKey(item);
+        if (cheaperKey === 'A' || cheaperKey === 'TIE') {
+          cardA.classList.add('lowest-winner');
+          badgeA.innerHTML = `<span class="lowest-badge">👑 最低價準則 (${formatHKD(item.priceA)})</span>`;
+        }
+        if (cheaperKey === 'B' || cheaperKey === 'TIE') {
+          cardB.classList.add('lowest-winner');
+          badgeB.innerHTML = `<span class="lowest-badge">👑 最低價準則 (${formatHKD(item.priceB)})</span>`;
+        }
+      }
+
+      paintBonus(item);
+
+      // Overbid ceiling hint
+      const ceilingEl = document.getElementById('overbidCeilingHint');
+      if (gameState.overbidCeiling !== null) {
+        ceilingEl.innerHTML = `⚠️ <strong>全場爆煲重投限制：</strong>所有組別新一輪出價必須低於 <strong>${formatHKD(gameState.overbidCeiling)}</strong>！`;
+      } else {
+        ceilingEl.innerHTML = `📌 規則提示：各組出價不可重複；最接近最低實價而唔爆煲即贏 +100 分（一矢中的獎 +300 分）！`;
+      }
+
+      renderLecterns();
+      renderHostPeek();
+      renderQuestionEditorTable();
+      saveState();
+      maybeSyncTeams();
+    }
+
+    function paintBonus(item) {
+      const bonusPanel = document.getElementById('bonusPanel');
+      const show = gameState.stage !== 'BIDDING' && item.category !== 'showcase' && !!gameState.roundWinnerTeamId;
+      bonusPanel.classList.toggle('active', show);
+      if (!show) return;
+      const winnerTeam = gameState.teams.find(t => t.id === gameState.roundWinnerTeamId);
+      document.getElementById('bonusWinnerTag').textContent = winnerTeam
+        ? `挑戰組別：${winnerTeam.name}`
+        : '全場自由搶答';
+      document.getElementById('bonusBtnA').textContent = `👈 係 ${item.storeAName} 平啲！`;
+      document.getElementById('bonusBtnB').textContent = `👉 係 ${item.storeBName} 平啲！`;
+      const lockedOut = gameState.bonusCompleted || gameState.stage !== 'LOWEST_REVEALED';
+      ['bonusBtnA', 'bonusBtnB', 'bonusBtnTie'].forEach((id) => {
+        document.getElementById(id).disabled = lockedOut;
+      });
+      const resultEl = document.getElementById('bonusResultText');
+      resultEl.textContent = gameState.bonusMessage || '';
+      resultEl.style.color = gameState.bonusOk ? '#15803D' : '#DC2626';
+    }
+
+    function renderLecterns() {
+      const grid = document.getElementById('lecternsGrid');
+      const item = getCurrentItem();
+      const lowest = getLowestPrice(item);
+
+      grid.innerHTML = gameState.teams.map((team, idx) => {
+        let cardClass = 'lectern-card';
+        let statusClass = 'lectern-status status-waiting';
+        let statusText = '⏳ 等待輸入出價...';
+
+        if (gameState.stage === 'BIDDING') {
+          if (team.locked) {
+            statusClass = 'lectern-status status-locked';
+            statusText = '🔒 已鎖定出價';
+          }
+        } else {
+          const bidVal = parseFloat(team.bid);
+          if (isNaN(bidVal)) {
+            statusText = '未出價';
+          } else if (bidVal > lowest) {
+            cardClass += ' overbid-lectern';
+            statusClass = 'lectern-status status-overbid';
+            statusText = `💥 爆煲 OVERBID! (+$${(bidVal - lowest).toFixed(1)})`;
+          } else if (team.id === gameState.roundWinnerTeamId) {
+            cardClass += ' winner-lectern';
+            const diff = Math.abs(lowest - bidVal);
+            if (diff < 0.001) {
+              statusClass = 'lectern-status status-exact';
+              statusText = '🎯 一矢中的 EXACT BID! (+300分)';
+            } else {
+              statusClass = 'lectern-status status-winner';
+              statusText = `🏆 最接近勝出！(僅差 $${diff.toFixed(1)})`;
+            }
+          } else {
+            const diff = (lowest - bidVal).toFixed(1);
+            statusClass = 'lectern-status status-locked';
+            statusText = `差 $${diff}（未爆煲）`;
+          }
+        }
+
+        const hideNumber = gameState.blindMode && team.locked && gameState.stage === 'BIDDING';
+
+        return `
+          <div class="${cardClass}">
+            <div class="team-header">
+              <div class="team-name-badge">${esc(team.name)}</div>
+              <div class="team-score-pill">${team.score} 分</div>
+            </div>
+
+            <div class="digital-bid-screen">
+              <span class="digital-bid-label">CONTESTANT BID 出價競投台</span>
+              <div class="bid-input-row">
+                <span class="currency-prefix">HK$</span>
+                ${
+                  hideNumber
+                    ? `<span style="font-size:1.9rem; font-weight:900; padding:4px 12px;">🔒 暗標已鎖</span>`
+                    : `<input type="number" step="0.1" min="0"
+                        class="bid-number-input"
+                        value="${team.bid}"
+                        placeholder="0.0"
+                        ${team.locked || gameState.stage !== 'BIDDING' ? 'disabled' : ''}
+                        oninput="updateTeamBid('${team.id}', this.value)"
+                      />`
+                }
+              </div>
+            </div>
+
+            <div class="${statusClass}">${statusText}</div>
+
+            <div class="lectern-actions">
+              <button class="btn-lock-bid ${team.locked ? 'locked' : ''}"
+                onclick="toggleTeamLock('${team.id}')"
+                ${gameState.stage !== 'BIDDING' ? 'disabled' : ''}>
+                ${team.locked ? '🔓 解鎖修改' : '🔒 鎖定出價'}
+              </button>
+              <button style="background:#F8FAFC;" onclick="quickScoreAdjust('${team.id}', 50)" title="主持快速加50分">+50分</button>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    /*************************************************************************
+     * 5. GAMEPLAY ACTIONS (ONE BID, OVERBID CHECK, BONUS, SHOWCASE)
+     *************************************************************************/
+    function updateTeamBid(teamId, val) {
+      const team = gameState.teams.find(t => t.id === teamId);
+      if (!team) return;
+      team.bid = val;
+      saveState();
+    }
+
+    function toggleTeamLock(teamId) {
+      const team = gameState.teams.find(t => t.id === teamId);
+      if (!team || gameState.stage !== 'BIDDING') return;
+
+      if (!team.locked) {
+        const num = parseFloat(team.bid);
+        if (isNaN(num) || num <= 0) {
+          showStatusBanner('⚠️ 請先輸入有效嘅競投銀碼（大於 HK$0）！', 'overbid-alert');
+          return;
+        }
+        // Check duplicate bid in open mode
+        if (!gameState.blindMode) {
+          const dup = gameState.teams.find(t => t.id !== teamId && t.locked && Math.abs(parseFloat(t.bid) - num) < 0.001);
+          if (dup) {
+            showStatusBanner(`⚠️ 明標規則：不可與【${dup.name}】出相同銀碼 (HK$ ${num})！請微調出價！`, 'overbid-alert');
+            playOverbidHorn();
+            return;
+          }
+        }
+        // Check overbid ceiling if active
+        if (gameState.overbidCeiling !== null && num >= gameState.overbidCeiling) {
+          showStatusBanner(`⚠️ 上輪全場爆煲！本輪出價必須低於 ${formatHKD(gameState.overbidCeiling)}！`, 'overbid-alert');
+          playOverbidHorn();
+          return;
+        }
+        team.locked = true;
+        playBidLockSound();
+      } else {
+        team.locked = false;
+      }
+      hideStatusBanner();
+      renderAll();
+    }
+
+    function lockAllBids() {
+      if (gameState.stage !== 'BIDDING') return;
+      const problems = [];
+      gameState.teams.forEach(t => {
+        if (t.locked) return;
+        const num = parseFloat(t.bid);
+        if (t.bid === '' || isNaN(num)) return;
+        if (num <= 0) {
+          problems.push(`${t.name} 銀碼無效`);
+          return;
+        }
+        if (!gameState.blindMode) {
+          const dup = gameState.teams.find(other => other.id !== t.id && other.locked && Math.abs(parseFloat(other.bid) - num) < 0.001);
+          if (dup) {
+            problems.push(`${t.name} 同 ${dup.name} 同價`);
+            return;
+          }
+        }
+        if (gameState.overbidCeiling !== null && num >= gameState.overbidCeiling) {
+          problems.push(`${t.name} 未低過爆煲上限`);
+          return;
+        }
+        t.locked = true;
+      });
+      if (problems.length) {
+        showStatusBanner(`⚠️ 有組鎖唔到：${problems.join('；')}`, 'overbid-alert');
+        playOverbidHorn();
+      } else {
+        playBidLockSound();
+        hideStatusBanner();
+      }
+      renderAll();
+    }
+
+    function resetRoundBoard() {
+      gameState.teams.forEach(t => {
+        t.bid = '';
+        t.locked = false;
+        t.status = 'waiting';
+      });
+      gameState.stage = 'BIDDING';
+      gameState.roundWinnerTeamId = null;
+      gameState.bonusCompleted = false;
+      gameState.bonusMessage = '';
+      gameState.bonusOk = false;
+      hideStatusBanner();
+      renderAll();
+      sendRoom({ type: 'CLEAR_BIDS' });
+    }
+
+    function clearCurrentBids() {
+      if ((gameState.pendingAwards || []).length > 0) {
+        if (!confirm('呢輪已經加過分。清空會撤銷啱啱加嘅分，再嚟過。確定？')) return;
+        undoRoundScores();
+      }
+      resetRoundBoard();
+    }
+
+    function advanceQuestion(nextIndex) {
+      stopTimer();
+      resetTimer(30);
+      commitRoundScores();
+      gameState.currentIndex = nextIndex;
+      gameState.overbidCeiling = null;
+      resetRoundBoard();
+    }
+
+    function revealLowestPrice() {
+      if (gameState.stage !== 'BIDDING') return;
+
+      const drafted = gameState.teams.filter(t => {
+        const num = parseFloat(t.bid);
+        return t.bid !== '' && !isNaN(num) && num > 0 && !t.locked;
+      });
+      if (drafted.length) {
+        showStatusBanner(`⚠️ ${drafted.map(t => t.name).join('、')} 未鎖定。鎖定晒先揭曉。`, 'overbid-alert');
+        return;
+      }
+
+      const activeBids = gameState.teams
+        .filter(t => t.locked)
+        .map(t => ({ team: t, val: parseFloat(t.bid) }))
+        .filter(x => !isNaN(x.val) && x.val > 0);
+
+      if (activeBids.length === 0) {
+        showStatusBanner('⚠️ 仲未有組別鎖定出價！請至少一組鎖定銀碼再揭曉！', 'overbid-alert');
+        return;
+      }
+
+      stopTimer();
+      const item = getCurrentItem();
+      const lowest = getLowestPrice(item);
+
+      // Filter bids that did NOT go over (<= lowest)
+      const validBids = activeBids.filter(x => x.val <= lowest + 0.0001);
+
+      if (validBids.length === 0) {
+        // ALL OVERBID! Classic Price is Right rule
+        const minOverbid = Math.min(...activeBids.map(x => x.val));
+        gameState.overbidCeiling = minOverbid;
+        playOverbidHorn();
+        showStatusBanner(
+          `💥 全場爆煲 (ALL OVERBID)！所有組別出價都高過官方最低價！請各組重新出價，且不可高於上輪最低出價 ${formatHKD(minOverbid)}！`,
+          'overbid-alert'
+        );
+        gameState.teams.forEach(t => {
+          t.locked = false;
+        });
+        renderAll();
+        return;
+      }
+
+      // Find closest without going over
+      validBids.sort((a, b) => b.val - a.val);
+      const winningEntry = validBids[0];
+      const winner = winningEntry.team;
+      gameState.roundWinnerTeamId = winner.id;
+      gameState.overbidCeiling = null;
+
+      const diff = Math.abs(lowest - winningEntry.val);
+      const isShowcase = item.category === 'showcase';
+
+      if (isShowcase) {
+        gameState.stage = 'FULL_REVEALED';
+        if (diff <= 50) {
+          awardPoints(winner, 800);
+          playExactJackpotSound();
+          showStatusBanner(
+            `🌟 終極大櫥窗奇蹟誕生！【${winner.name}】出價 ${formatHKD(winningEntry.val)} 與最低實價 ${formatHKD(lowest)} 誤差喺 $50 內，獨得雙倍大獎 +800 分！`,
+            'winner-alert'
+          );
+        } else {
+          awardPoints(winner, 500);
+          playVictoryBell();
+          showStatusBanner(
+            `🌟 終極大櫥窗大贏家！【${winner.name}】以 ${formatHKD(winningEntry.val)} 最接近最低實價 ${formatHKD(lowest)}，奪得 +500 分！`,
+            'winner-alert'
+          );
+        }
+      } else {
+        gameState.stage = 'LOWEST_REVEALED';
+        if (diff < 0.001) {
+          awardPoints(winner, 300);
+          playExactJackpotSound();
+          showStatusBanner(
+            `🎯 一矢中的 (EXACT BID)！【${winner.name}】完全估中最低實價 ${formatHKD(lowest)}，狂奪 +300 分！請埋位挑戰下方格價王 Bonus！`,
+            'winner-alert'
+          );
+        } else {
+          awardPoints(winner, 100);
+          playVictoryBell();
+          showStatusBanner(
+            `🏆 【${winner.name}】以 ${formatHKD(winningEntry.val)} 最接近最低實價 ${formatHKD(lowest)} 勝出 (+100分)！即刻進入下方格價王 Bonus 挑戰！`,
+            'winner-alert'
+          );
+        }
+      }
+
+      renderAll();
+    }
+
+    function resolveBonusChoice(choiceKey) {
+      if (gameState.bonusCompleted || gameState.stage !== 'LOWEST_REVEALED') return;
+      const item = getCurrentItem();
+      const actualKey = getCheaperStoreKey(item);
+      const winnerTeam = gameState.teams.find(t => t.id === gameState.roundWinnerTeamId);
+      const actualName = actualKey === 'A' ? item.storeAName : actualKey === 'B' ? item.storeBName : '兩間商戶同價';
+
+      gameState.bonusCompleted = true;
+      gameState.stage = 'FULL_REVEALED';
+
+      if (choiceKey === actualKey) {
+        if (winnerTeam) awardPoints(winnerTeam, 100);
+        playVictoryBell();
+        gameState.bonusOk = true;
+        gameState.bonusMessage = `✅ 答中咗！${actualName} 確實係最低價！${winnerTeam ? winnerTeam.name + ' 額外再加 +100 分！' : ''}`;
+      } else {
+        playOverbidHorn();
+        gameState.bonusOk = false;
+        gameState.bonusMessage = `❌ 估錯咗！今題最低價其實係 ${actualName}！`;
+      }
+
+      renderAll();
+    }
+
+    function forceRevealBothStores() {
+      gameState.stage = 'FULL_REVEALED';
+      closeModal('hostModal');
+      renderAll();
+    }
+
+    function nextQuestion() {
+      advanceQuestion((gameState.currentIndex + 1) % gameState.items.length);
+    }
+
+    function prevQuestion() {
+      advanceQuestion((gameState.currentIndex - 1 + gameState.items.length) % gameState.items.length);
+    }
+
+    function jumpToShowcase() {
+      const idx = gameState.items.findIndex(i => i.category === 'showcase');
+      advanceQuestion(idx !== -1 ? idx : gameState.items.length - 1);
+      playComeOnDownSound();
+    }
+
+    function toggleBlindMode() {
+      gameState.blindMode = !gameState.blindMode;
+      renderAll();
+    }
+
+    function showStatusBanner(msg, cls) {
+      const el = document.getElementById('statusBanner');
+      el.className = `status-banner show ${cls}`;
+      el.textContent = msg;
+    }
+
+    function hideStatusBanner() {
+      const el = document.getElementById('statusBanner');
+      el.className = 'status-banner';
+      el.textContent = '';
+    }
+
+    /*************************************************************************
+     * 6. COUNTDOWN TIMER CONTROLS
+     *************************************************************************/
+    function updateTimerUI() {
+      document.getElementById('timerDisplay').textContent = `⏱️ ${timerSeconds}s`;
+      document.getElementById('timerToggleBtn').textContent = timerInterval ? '⏸️ 暫停倒數' : '▶️ 開始倒數';
+    }
+
+    function toggleTimer() {
+      if (timerInterval) {
+        stopTimer();
+      } else {
+        ensureAudio();
+        timerInterval = setInterval(() => {
+          if (timerSeconds > 0) {
+            timerSeconds--;
+            if (timerSeconds <= 5 && timerSeconds > 0) {
+              playTone(880, 'sine', 0.08, 0, 0.14);
+            }
+            updateTimerUI();
+          } else {
+            stopTimer();
+            playOverbidHorn();
+            lockAllBids();
+          }
+        }, 1000);
+        updateTimerUI();
+      }
+    }
+
+    function stopTimer() {
+      if (timerInterval) {
+        clearInterval(timerInterval);
+        timerInterval = null;
+      }
+      updateTimerUI();
+    }
+
+    function resetTimer(sec = 30) {
+      stopTimer();
+      timerSeconds = sec;
+      updateTimerUI();
+    }
+
+    /*************************************************************************
+     * 7. HOST GOD-MODE, TEAM MANAGEMENT & QUESTION BANK EDITOR
+     *************************************************************************/
+    function quickScoreAdjust(teamId, delta) {
+      const team = gameState.teams.find(t => t.id === teamId);
+      if (!team) return;
+      team.score = Math.max(0, team.score + delta);
+      playBidLockSound();
+      renderAll();
+    }
+
+    function addNewTeamPrompt() {
+      const emojis = ['🐯', '🐨', '🐰', '🐙', '🦄', '🐝'];
+      const nextNum = gameState.teams.length + 1;
+      const emoji = emojis[nextNum % emojis.length];
+      const name = prompt('請輸入新組別名稱：', `${emoji} 第${nextNum}組`);
+      if (!name) return;
+      gameState.teams.push({
+        id: 't_' + Date.now(),
+        name: name.trim(),
+        score: 0,
+        bid: '',
+        locked: false,
+        status: 'waiting'
+      });
+      renderAll();
+    }
+
+    function renderHostPeek() {
+      const item = getCurrentItem();
+      const lowest = getLowestPrice(item);
+      const peekEl = document.getElementById('hostPeekAnswer');
+      if (peekEl) {
+        peekEl.textContent = `${item.storeAName}: ${formatHKD(item.priceA)} ｜ ${item.storeBName}: ${formatHKD(item.priceB)} ➡️ 最低準則價: ${formatHKD(lowest)}`;
+      }
+
+      const hostTeamsEl = document.getElementById('hostTeamsEditor');
+      if (!hostTeamsEl) return;
+      hostTeamsEl.innerHTML = gameState.teams.map((t, idx) => `
+        <div style="display:flex; flex-wrap:wrap; gap:8px; align-items:center; background:#F8FAFC; padding:10px 14px; border-radius:14px;">
+          <input type="text" value="${esc(t.name)}" onchange="renameTeam('${t.id}', this.value)"
+            style="padding:6px 10px; border-radius:8px; border:2px solid #CBD5E1; font-weight:900; width:150px;" />
+          <span style="font-weight:900; min-width:80px;">分數：${t.score}</span>
+          <button class="pill-btn" onclick="quickScoreAdjust('${t.id}', 100)">+100</button>
+          <button class="pill-btn" onclick="quickScoreAdjust('${t.id}', -100)">-100</button>
+          <button class="pill-btn" onclick="removeTeam('${t.id}')" style="color:#DC2626;">🗑️ 移除</button>
+        </div>
+      `).join('');
+    }
+
+    function renameTeam(teamId, newName) {
+      const team = gameState.teams.find(t => t.id === teamId);
+      if (team && newName.trim()) {
+        team.name = newName.trim();
+        renderAll();
+      }
+    }
+
+    function removeTeam(teamId) {
+      if (gameState.teams.length <= 2) {
+        alert('至少需要保留 2 組進行對決！');
+        return;
+      }
+      gameState.teams = gameState.teams.filter(t => t.id !== teamId);
+      renderAll();
+    }
+
+    function updateStoreLabelsInForm() {
+      const cat = document.getElementById('editCategory').value;
+      const labelA = document.getElementById('labelStoreA');
+      const labelB = document.getElementById('labelStoreB');
+      if (cat === 'supermarket') {
+        labelA.textContent = '惠康 Wellcome 標價 (HK$)';
+        labelB.textContent = '百佳 PARKnSHOP 標價 (HK$)';
+      } else if (cat === 'electronics') {
+        labelA.textContent = '豐澤 Fortress 標價 (HK$)';
+        labelB.textContent = '百老匯 Broadway 標價 (HK$)';
+      } else {
+        labelA.textContent = '組合 A (惠康+豐澤) 總價 (HK$)';
+        labelB.textContent = '組合 B (百佳+百老匯) 總價 (HK$)';
+      }
+    }
+
+    function addCustomQuestion() {
+      const category = document.getElementById('editCategory').value;
+      const emoji = document.getElementById('editEmoji').value.trim() || '🏷️';
+      const name = document.getElementById('editName').value.trim();
+      const spec = document.getElementById('editSpec').value.trim() || '標準裝';
+      const priceA = parseFloat(document.getElementById('editPriceA').value);
+      const priceB = parseFloat(document.getElementById('editPriceB').value);
+      const note = document.getElementById('editNote').value.trim();
+
+      if (!name || isNaN(priceA) || isNaN(priceB)) {
+        alert('請填妥貨品名稱及兩間商戶標價！');
+        return;
+      }
+
+      const storeAName = category === 'supermarket' ? '惠康 Wellcome' : category === 'electronics' ? '豐澤 Fortress' : '惠康＋豐澤 組合';
+      const storeBName = category === 'supermarket' ? '百佳 PARKnSHOP' : category === 'electronics' ? '百老匯 Broadway' : '百佳＋百老匯 組合';
+
+      gameState.items.push({
+        id: 'custom_' + Date.now(),
+        category,
+        emoji,
+        name,
+        spec,
+        storeAName,
+        priceA,
+        storeBName,
+        priceB,
+        note: note || `由同工自訂格價題目（以最低價 HK$${Math.min(priceA, priceB)} 為準）`
+      });
+
+      document.getElementById('editName').value = '';
+      document.getElementById('editSpec').value = '';
+      document.getElementById('editPriceA').value = '';
+      document.getElementById('editPriceB').value = '';
+      document.getElementById('editNote').value = '';
+      renderAll();
+    }
+
+    function renderQuestionEditorTable() {
+      const tbody = document.getElementById('questionTableBody');
+      if (!tbody) return;
+      tbody.innerHTML = gameState.items.map((item, idx) => {
+        const lowest = getLowestPrice(item);
+        return `
+          <tr>
+            <td>${idx + 1}</td>
+            <td><strong>${esc(item.emoji)} ${esc(item.name)}</strong><br/><span style="color:#64748B;">${esc(item.spec)}</span></td>
+            <td>${esc(item.storeAName)}<br/><strong>${formatHKD(item.priceA)}</strong></td>
+            <td>${esc(item.storeBName)}<br/><strong>${formatHKD(item.priceB)}</strong></td>
+            <td style="color:var(--game-green-bg); font-weight:900;">${formatHKD(lowest)}</td>
+            <td>
+              <button class="pill-btn" style="padding:4px 10px; font-size:0.82rem;" onclick="jumpToQuestion(${idx})">跳去此題</button>
+              <button class="pill-btn" style="padding:4px 10px; font-size:0.82rem; color:#DC2626;" onclick="deleteQuestion(${idx})">刪除</button>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    function jumpToQuestion(idx) {
+      advanceQuestion(idx);
+      closeModal('editorModal');
+    }
+
+    function deleteQuestion(idx) {
+      if (gameState.items.length <= 1) {
+        alert('題庫至少需要保留 1 題！');
+        return;
+      }
+      gameState.items.splice(idx, 1);
+      if (gameState.currentIndex >= gameState.items.length) {
+        gameState.currentIndex = 0;
+      }
+      renderAll();
+    }
+
+    function exportQuestionsJSON() {
+      const blob = new Blob([JSON.stringify(gameState.items, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'price-is-right-hk-questions.json';
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    function triggerImportJSON() {
+      document.getElementById('importJsonInput').click();
+    }
+
+    function handleImportJSON(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        try {
+          const imported = JSON.parse(e.target.result);
+          if (Array.isArray(imported) && imported.length > 0) {
+            commitRoundScores();
+            gameState.items = imported;
+            gameState.currentIndex = 0;
+            gameState.overbidCeiling = null;
+            resetRoundBoard();
+            alert(`成功匯入 ${imported.length} 題香港格價題目！`);
+          }
+        } catch (err) {
+          alert('JSON 格式錯誤，請檢查檔案！');
+        }
+      };
+      reader.readAsText(file);
+    }
+
+    function restoreDefaultQuestions() {
+      if (!confirm('確定要還原預設嘅 12 題香港惠康/百佳、豐澤/百老匯題庫？')) return;
+      commitRoundScores();
+      gameState.items = JSON.parse(JSON.stringify(DEFAULT_ITEMS));
+      gameState.currentIndex = 0;
+      gameState.overbidCeiling = null;
+      resetRoundBoard();
+    }
+
+    /*************************************************************************
+     * 8. MODALS, QR CODE & PODIUM SETTLEMENT
+     *************************************************************************/
+    function openModal(id) {
+      document.getElementById(id).classList.add('open');
+      if (id === 'qrModal') {
+        renderQRCode();
+      }
+      if (id === 'hostModal') {
+        renderHostPeek();
+      }
+    }
+
+    function closeModal(id) {
+      document.getElementById(id).classList.remove('open');
+    }
+
+    function renderQRCode() {
+      const container = document.getElementById('qrcodeContainer');
+      container.innerHTML = '';
+      const note = document.getElementById('qrNote');
+      let target = window.location.href;
+      if (roomCode && roomRole === 'host') {
+        target = playerPageUrl(roomCode);
+        if (note) note.textContent = `團友掃呢個碼入房 ${roomCode}，只可以送出價，睇唔到答案。`;
+      } else if (note) {
+        note.textContent = '未開房間。撳「手機競投」之後，呢度先會出團友出價頁嘅 QR。';
+      }
+      document.getElementById('qrUrlText').textContent = target;
+      if (typeof QRCode !== 'undefined') {
+        new QRCode(container, {
+          text: target,
+          width: 200,
+          height: 200,
+          colorDark: '#4A3222',
+          colorLight: '#FFFFFF'
+        });
+      }
+    }
+
+    function openPodiumModal() {
+      closeModal('hostModal');
+      const sorted = [...gameState.teams].sort((a, b) => b.score - a.score);
+      const champ = sorted[0];
+      document.getElementById('podiumChampionText').textContent =
+        `全場格價王冠軍：${champ.name}（${champ.score} 分）！`;
+
+      const medals = ['🥇 冠軍', '🥈 亞軍', '🥉 季軍', '🎖️ 殿軍'];
+      document.getElementById('podiumStandingsList').innerHTML = sorted.map((t, idx) => `
+        <div style="display:flex; justify-content:space-between; align-items:center; background:#FFFFFF; padding:14px 20px; border-radius:18px; border:3px solid var(--game-brown-text); font-size:1.25rem; font-weight:900;">
+          <span>${medals[idx] || `第 ${idx + 1} 名`}：${esc(t.name)}</span>
+          <span style="color:var(--game-blue-tag);">${t.score} 分</span>
+        </div>
+      `).join('');
+
+      playComeOnDownSound();
+      openModal('podiumModal');
+    }
+
+    function confirmResetGame() {
+      if (!confirm('確定要重開遊戲？（所有組別分數會歸零，返去第 1 題）')) return;
+      gameState.pendingAwards = [];
+      gameState.currentIndex = 0;
+      gameState.overbidCeiling = null;
+      gameState.teams.forEach(t => {
+        t.score = 0;
+      });
+      resetRoundBoard();
+    }
+
+    /*************************************************************************
+     * 9. MODE C — PHONE BIDS INTO THE HOST SCREEN
+     *************************************************************************/
+    let roomCode = '';
+    let roomRole = '';
+    let roomSocket = null;
+    let roomRetry = null;
+    let lastTeamSync = '';
+    let playerTeams = [];
+    let playerBids = {};
+    let selectedTeamId = '';
+    const ROOM_STORAGE_KEY = 'price_is_right_room';
+
+    function playerPageUrl(code) {
+      const url = new URL(location.origin + location.pathname);
+      url.searchParams.set('room', code);
+      url.searchParams.set('role', 'player');
+      return url.toString();
+    }
+
+    function makeRoomCode() {
+      const alphabet = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+      let code = '';
+      for (let i = 0; i < 4; i += 1) {
+        code += alphabet[Math.floor(Math.random() * alphabet.length)];
+      }
+      return code;
+    }
+
+    function setRoomStatus(text) {
+      const host = document.getElementById('roomStatus');
+      if (host && roomRole === 'host') host.textContent = text;
+      const player = document.getElementById('playerStatus');
+      if (player && roomRole === 'player') player.textContent = text;
+      const pill = document.getElementById('roomLivePill');
+      if (pill) pill.textContent = roomRole === 'host' && roomCode ? `📱 房間 ${roomCode}` : '';
+    }
+
+    function sendRoom(msg) {
+      if (roomSocket && roomSocket.readyState === WebSocket.OPEN) {
+        roomSocket.send(JSON.stringify(msg));
+      }
+    }
+
+    function maybeSyncTeams() {
+      if (roomRole !== 'host' || !roomSocket || roomSocket.readyState !== WebSocket.OPEN) return;
+      const teams = gameState.teams.map((team) => ({ id: team.id, name: team.name }));
+      const key = JSON.stringify(teams);
+      if (key === lastTeamSync) return;
+      roomSocket.send(JSON.stringify({ type: 'SYNC_TEAMS', teams }));
+      lastTeamSync = key;
+    }
+
+    function applyRemoteBids(bids) {
+      if (roomRole !== 'host' || gameState.stage !== 'BIDDING') return;
+      let changed = false;
+      gameState.teams.forEach((team) => {
+        if (team.locked || !Object.prototype.hasOwnProperty.call(bids, team.id)) return;
+        const next = String(bids[team.id] ?? '');
+        if (team.bid !== next) {
+          team.bid = next;
+          changed = true;
+        }
+      });
+      if (changed) renderAll();
+    }
+
+    function connectRoom(code, role) {
+      roomCode = String(code || '').toUpperCase();
+      roomRole = role;
+      if (roomRetry) clearTimeout(roomRetry);
+      if (roomSocket) {
+        roomSocket.onclose = null;
+        roomSocket.close();
+      }
+      const proto = location.protocol === 'https:' ? 'wss:' : 'ws:';
+      const socket = new WebSocket(`${proto}//${location.host}/api/room/${encodeURIComponent(roomCode)}?role=${role}`);
+      roomSocket = socket;
+      setRoomStatus('連接緊房間…');
+      socket.onopen = () => {
+        if (roomSocket !== socket) return;
+        socket.send(JSON.stringify({ type: 'JOIN', role }));
+        setRoomStatus(role === 'host' ? `房間 ${roomCode} 已連接，團友可以送出價` : `已連接房間 ${roomCode}`);
+        if (role === 'host') {
+          sessionStorage.setItem(ROOM_STORAGE_KEY, roomCode);
+          lastTeamSync = '';
+          maybeSyncTeams();
+          setTimeout(() => {
+            if (roomSocket === socket) maybeSyncTeams();
+          }, 50);
+        }
+      };
+      socket.onmessage = (event) => {
+        if (roomSocket !== socket) return;
+        let data;
+        try { data = JSON.parse(event.data); } catch { return; }
+        if (!data || data.type !== 'ROOM') return;
+        if (role === 'host') {
+          if (!lastTeamSync) maybeSyncTeams();
+          applyRemoteBids(data.bids || {});
+        }
+        if (role === 'player') renderPlayer(data);
+      };
+      socket.onclose = () => {
+        if (roomSocket !== socket || !roomCode) return;
+        setRoomStatus('連接中斷，重試緊…');
+        roomRetry = setTimeout(() => connectRoom(roomCode, role), 1500);
+      };
+    }
+
+    function renderRoomQr() {
+      const codeEl = document.getElementById('roomCodeText');
+      const urlEl = document.getElementById('roomUrlText');
+      const box = document.getElementById('roomQr');
+      if (!codeEl || !box) return;
+      const target = roomCode ? playerPageUrl(roomCode) : '';
+      codeEl.textContent = roomCode;
+      if (urlEl) urlEl.textContent = target;
+      box.innerHTML = '';
+      if (roomCode && typeof QRCode !== 'undefined') {
+        new QRCode(box, {
+          text: target,
+          width: 200,
+          height: 200,
+          colorDark: '#4A3222',
+          colorLight: '#FFFFFF'
+        });
+      }
+    }
+
+    function startHostRoom(existing) {
+      const next = String(existing || makeRoomCode()).toUpperCase();
+      renderRoomQr();
+      connectRoom(next, 'host');
+      renderRoomQr();
+    }
+
+    function openRoomModal() {
+      if (!roomCode) startHostRoom();
+      else renderRoomQr();
+      openModal('roomModal');
+    }
+
+    function closeHostRoom() {
+      sessionStorage.removeItem(ROOM_STORAGE_KEY);
+      if (roomRetry) clearTimeout(roomRetry);
+      roomCode = '';
+      if (roomSocket) {
+        roomSocket.onclose = null;
+        roomSocket.close();
+        roomSocket = null;
+      }
+      lastTeamSync = '';
+      setRoomStatus('房間已關閉');
+      renderRoomQr();
+    }
+
+    function renderPlayer(data) {
+      playerTeams = Array.isArray(data.teams) ? data.teams : [];
+      playerBids = data.bids || {};
+      const list = document.getElementById('playerTeams');
+      if (!list) return;
+      if (!selectedTeamId || !playerTeams.some((team) => team.id === selectedTeamId)) {
+        selectedTeamId = playerTeams[0] ? playerTeams[0].id : '';
+      }
+      list.innerHTML = playerTeams.map((team) => `
+        <button type="button" class="pill-btn ${team.id === selectedTeamId ? 'cta-pink' : ''}" onclick="selectPlayerTeam('${team.id}')">${esc(team.name)}</button>
+      `).join('') || '<p style="font-weight:700;">等主持開波…</p>';
+      const sent = document.getElementById('playerSent');
+      if (sent) {
+        const mine = selectedTeamId ? playerBids[selectedTeamId] : '';
+        sent.textContent = mine ? `大電視收到你嗰組：HK$ ${mine}` : '未送出價';
+      }
+    }
+
+    function selectPlayerTeam(id) {
+      selectedTeamId = id;
+      sessionStorage.setItem('price_player_team', id);
+      renderPlayer({ teams: playerTeams, bids: playerBids });
+    }
+
+    function submitPlayerBid() {
+      if (!selectedTeamId) {
+        alert('先揀你嗰組');
+        return;
+      }
+      const num = Number(document.getElementById('playerBidInput').value);
+      if (!Number.isFinite(num) || num <= 0) {
+        alert('輸入大過 0 嘅銀碼');
+        return;
+      }
+      sendRoom({ type: 'SUBMIT_BID', teamId: selectedTeamId, bid: num });
+      const sent = document.getElementById('playerSent');
+      if (sent) sent.textContent = '送緊去大電視…';
+    }
+
+    function joinTypedRoom() {
+      const code = document.getElementById('playerRoomInput').value.trim().toUpperCase();
+      if (!/^[A-Z0-9]{4}$/.test(code)) {
+        alert('房間碼係 4 個字');
+        return;
+      }
+      const url = new URL(location.href);
+      url.searchParams.set('room', code);
+      url.searchParams.set('role', 'player');
+      location.href = url.toString();
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const params = new URLSearchParams(location.search);
+      if (params.get('role') === 'player') {
+        document.body.classList.add('player-mode');
+        selectedTeamId = sessionStorage.getItem('price_player_team') || '';
+        const code = (params.get('room') || '').toUpperCase();
+        if (/^[A-Z0-9]{4}$/.test(code)) {
+          document.getElementById('playerJoin').hidden = true;
+          document.getElementById('playerPlay').hidden = false;
+          connectRoom(code, 'player');
+        }
+        return;
+      }
+      loadState();
+      renderAll();
+      const saved = sessionStorage.getItem(ROOM_STORAGE_KEY);
+      if (saved && /^[A-Z0-9]{4}$/.test(saved)) startHostRoom(saved);
+    });
+  </script>
+
+</body>
+</html>
